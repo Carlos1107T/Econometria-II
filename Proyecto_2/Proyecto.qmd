@@ -1,0 +1,250 @@
+---
+title: "Proyecto"
+format: html
+editor: visual
+---
+# Autores:
+Héctor Eduardo Muñiz Navarro
+Amado Mauricio Ortega Sánchez
+Carlos Antonio Reyes Gutiérrez
+
+
+
+# Datos
+En primera instancia se cargaron los datos necesitados para realizar el analisis
+
+```{r}
+library(readxl)
+tc <- read_excel("./tc.xlsx", 
+    col_types = c("date", "numeric"))
+View(tc)
+```
+
+```{r}
+library(readr)
+data <- read_csv("./data.csv", 
+    col_types = cols(fecha = col_date(format = "%m/%d/%Y"), 
+        tasa_fed = col_number(), tasa_cete = col_number(), 
+        diferencial = col_number(), tc = col_number(), 
+        remesas = col_number(), oferta_monetaria = col_number(), 
+        exportaciones = col_number(), importaciones = col_number(), 
+        reservas = col_number(), deuda = col_number()))
+View(data)
+```
+
+En el siguiente chunck se cargaron las librerias necesarias para desarrollar el proyecto.
+
+```{r}
+library(zoo)
+library(urca)
+library(dplyr)
+library(vars)
+```
+
+
+En el siguiente apartado creamos una variable con los datos del tipo de cambio entre el dolar y el peso mexicano, ademas suavisamos los datos y tambien sustituimos los valores negativos por NA.
+```{r}
+tc <- data$tc
+sum(tc <= 0, na.rm = TRUE)
+tc[tc <= 0] <- NA
+log_tc <- log(tc)
+```
+
+
+Después creamos un objeto zoo esto para evitar que el plot falle, tambien cremos una diferencia para ver hacer estacionarios y poder verificar visualmente a través del grafico la volatilidad que se tiene.
+```{r}
+
+
+
+tc_zoo <- zoo(tc$SF17908, order.by = as.Date(tc$Fecha))
+
+
+log_tc  <- log(tc_zoo)
+diff_tc <- diff(log_tc) 
+
+plot(cbind(log_tc, diff_tc), 
+     main = "Análisis del Tipo de Cambio", 
+     col = "blue", 
+     xlab = "Fecha",
+     type = "l")
+```
+
+A partir de lo visualizado realizamos Zivot-Andrews para verificar los cambios estructurales en la serie de el tipo de cambio, se realizaron los 3 tipos de modelos para verificar el quiebre en la serie con intercepto y tendencia, el que solo tiene tendencia y el que cuenta con solamente intercepto.
+```{r}
+
+
+za_tc_both <- ur.za(log_tc, model = "both", lag = NULL)
+summary(za_tc_both)
+
+
+za_tc_trend <- ur.za(log_tc, model = "trend", lag = NULL)
+summary(za_tc_trend)
+
+
+za_tc_intercept <- ur.za(log_tc, model = "intercept", lag = NULL)
+summary(za_tc_intercept)
+
+
+
+```
+
+# Causalidad de Granger
+
+En la siguiente parte se prepararon los datos para realizar la causalidad de granger, primeramente se realizaron las series de tiempo del tipo de cambio y de las remesas.
+
+```{r}
+
+
+tc <- ts(
+  tc$SF17908,
+  frequency = 12,
+  start = c(2000, 1)
+)
+```
+
+```{r}
+tc_zoo <- as.zoo(tc)
+tc_mensual <- aggregate(tc_zoo, as.yearmon, tail, 1)
+tc_mensual_ts <- ts(coredata(tc_mensual),
+                    start = c(2000, 1),
+                    end = c(2026, 2),
+                    frequency = 12)
+
+
+diff_tc_mensual_ts <- diff(tc_mensual_ts)
+```
+
+
+
+```{r}
+
+remesas_ts <- ts(data$remesas, 
+                 start = c(2000, 1), 
+                 end = c(2026, 2), 
+                 frequency = 12)
+
+diff_remesas_ts <- diff(remesas_ts)
+
+
+```
+
+
+En el siguiente apartado pasamos a realizar la prueba de causalidad de Granger con las remesas, seleccionamos el modelo VAR optimo y pasamos a seleccionarlo.
+
+```{r}
+
+datos_causalidad <- cbind(diff_remesas_ts, diff_tc_mensual_ts)
+colnames(datos_causalidad) <- c("Remesas", "TC")
+
+
+seleccion <- VARselect(datos_causalidad, lag.max = 12, type = "const")
+p_optimo <- seleccion$selection["AIC(n)"]
+
+
+modelo_var <- VAR(datos_causalidad, p = p_optimo, type = "const")
+
+
+causalidad_resultado <- causality(modelo_var, cause = "TC")
+
+```
+En el siguiente chunck realizamos un data frame con todas la variables que se van a necesitar para realizar mas adelante el modelo VAR.
+```{r}
+data_df <- data.frame(
+  dif_tasa = data$diferencial,
+  tc = data$tc,
+  remesas = data$remesas,
+  oferta_m = data$oferta_monetaria,
+  exportaciones = data$exportaciones,
+  importaciones = data$importaciones,
+  reservas = data$reservas,
+  deuda = data$deuda
+)
+
+head(data_df)
+```
+
+A partir del data frame creamos una serie de tiempo con cada variable que se necesita para el modelo VAR
+```{r}
+
+data_ts <- ts(
+  data = data_df, 
+  frequency = 12,
+  start = c(2000,1)
+)
+
+data_ts
+```
+
+Una vez teniendo las demas variables decidimos hacer una prueba de causalidad de Granger pero esta vez para verificar si las demas variables son precedentes del tipo de cambio y verificar una vez mas si son significativas.
+```{r}
+
+diff_log_data <- diff(log(data_ts))
+
+
+seleccion <- VARselect(diff_log_data, lag.max = 12, type = "const")
+p_optimo <- seleccion$selection["AIC(n)"]
+
+
+modelo_var_completo <- VAR(diff_log_data, p = p_optimo, type = "const")
+
+
+causalidad_total <- causality(modelo_var_completo, 
+                               cause = c("remesas", "oferta_m", "exportaciones", "importaciones", "reservas", "deuda"))
+
+
+```
+
+
+
+Una vez teniendo la serie de tiempo decidimos suavizar los datos y realizar una diferencia para tener los datos estacionarios.
+```{r}
+diff_log_data <- diff(log(data_ts))
+plot(diff_log_data, plot.type = "m")
+```
+En este apartado realizamos un modelo VAR provisional para ir identificando si las variables a analizar tienen correlación y de esta maner ver si algunas se tienen que descartar o eliminar o incluso agregar otras.
+
+```{r}
+
+
+model_var <- VAR(diff_log_data, type = "const", p = 1)
+summary(model_var)
+```
+
+
+```{r}
+
+select_var <- VARselect(diff_log_data, lag.max = 12)
+select_var
+```
+
+A partir delmodelo VAR provisional decidimos realizar un nuevo modelo pero esta vez con 12 rezagos esto debido a que es una variable que en el corto plazo no tiene un gran impacto sin embargo  a lo largo de los siguientes meses se empiezan a ver sus efectos
+```{r}
+model_var_p_12 <- VAR(diff_log_data, type = "const", p=12)
+summary(model_var_p_12 )
+```
+
+```{r}
+prueba_serial <- serial.test(model_var, lags.pt = 6, type = "PT.asymptotic")
+print(prueba_serial)
+```
+# Impulso respuesta
+
+A partir de lo anterior decidimos hacer un impulso respuesta esto para observar como un cambio en el tipo de cambio afecta a cada variable en los siguientes 12 meses.
+
+```{r}
+impulse_respons <-irf(model_var_p_12, impulse = "tc",  n.ahead = 12)
+
+plot(impulse_respons)
+```
+
+
+
+
+
+
+
+
+
+
+
+
