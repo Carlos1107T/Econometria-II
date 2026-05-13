@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>proyecto</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="proyecto_remesas_files/libs/clipboard/clipboard.min.js"></script>
+<script src="proyecto_remesas_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="proyecto_remesas_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="proyecto_remesas_files/libs/quarto-html/popper.min.js"></script>
+<script src="proyecto_remesas_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="proyecto_remesas_files/libs/quarto-html/anchor.min.js"></script>
+<link href="proyecto_remesas_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="proyecto_remesas_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="proyecto_remesas_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="proyecto_remesas_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="proyecto_remesas_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">proyecto</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Indices <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/PC/Desktop/UNAM/6to Semestre/Econometría II/Proyecto_3/Indices.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 218 Columns: 3
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): Fecha
+dbl (2): tc_real, Indice_comercial
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/PC/Desktop/UNAM/6to Semestre/Econometría II/Proyecto_3/remesas_trim_guanajuato.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 73 Columns: 2
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): Fecha
+dbl (1): Remesas trimestrales
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tc_real<span class="ot">&lt;-</span> <span class="fu">ts</span>( </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data=</span> Indices<span class="sc">$</span>tc_real, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">frequency =</span> <span class="dv">12</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2008</span>, <span class="dv">1</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>Indice_comercial_ts<span class="ot">&lt;-</span> <span class="fu">ts</span>( </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data=</span> Indices<span class="sc">$</span>Indice_comercial, </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">frequency =</span> <span class="dv">12</span>, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2008</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tc_real_t <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(tc_real, <span class="at">nfrequency =</span> <span class="dv">4</span>, <span class="at">FUN =</span> mean)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tc_real_t)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proyecto_remesas_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tc_real_t)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Qtr1      Qtr2      Qtr3      Qtr4
+2008  81.89943  80.10903  78.86207  94.24037
+2009 102.48703  95.58190                    </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>comercial_t <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Indice_comercial_ts, <span class="at">nfrequency =</span> <span class="dv">4</span>, <span class="at">FUN =</span> mean)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(comercial_t)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proyecto_remesas_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>diff_tc_real <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">log</span>(tc_real_t))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>diff_comercial <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">log</span>(comercial_t))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>remesas_guanajuato_ts <span class="ot">&lt;-</span> <span class="fu">ts</span>( </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data=</span> data<span class="sc">$</span><span class="st">`</span><span class="at">Remesas trimestrales</span><span class="st">`</span>, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">frequency =</span> <span class="dv">4</span>, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2008</span>, <span class="dv">1</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>diff_remesas <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">log</span>(remesas_guanajuato_ts))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Adjuntando el paquete: 'zoo'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(urca)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Adjuntando el paquete: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Cargando paquete requerido: MASS</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Adjuntando el paquete: 'MASS'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:dplyr':
+
+    select</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Cargando paquete requerido: strucchange</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Cargando paquete requerido: sandwich</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Cargando paquete requerido: lmtest</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>datos_causalidad <span class="ot">&lt;-</span> <span class="fu">cbind</span>(diff_remesas, diff_comercial)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(datos_causalidad) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Comercio"</span>, <span class="st">"Remesas"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Esto te dirá cuántos NAs hay en cada columna</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(datos_causalidad))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Comercio  Remesas 
+       1        1 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>datos_causalidad <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(datos_causalidad)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>seleccion <span class="ot">&lt;-</span> <span class="fu">VARselect</span>(datos_causalidad, <span class="at">lag.max =</span> <span class="dv">12</span>, <span class="at">type =</span> <span class="st">"const"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>p_optimo <span class="ot">&lt;-</span> seleccion<span class="sc">$</span>selection[<span class="st">"AIC(n)"</span>]</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>modelo_var <span class="ot">&lt;-</span> <span class="fu">VAR</span>(datos_causalidad, <span class="at">p =</span> p_optimo, <span class="at">type =</span> <span class="st">"const"</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>causalidad_resultado <span class="ot">&lt;-</span> <span class="fu">causality</span>(modelo_var, <span class="at">cause =</span> <span class="st">"Remesas"</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>causalidad_resultado</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$Granger
+
+    Granger causality H0: Remesas do not Granger-cause Comercio
+
+data:  VAR object modelo_var
+F-Test = 3.7041, df1 = 5, df2 = 110, p-value = 0.003888
+
+
+$Instant
+
+    H0: No instantaneous causality between: Remesas and Comercio
+
+data:  VAR object modelo_var
+Chi-squared = 2.4878, df = 1, p-value = 0.1147</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+VAR Estimation Results:
+========================= 
+Endogenous variables: Comercio, Remesas 
+Deterministic variables: const 
+Sample size: 66 
+Log Likelihood: 210.023 
+Roots of the characteristic polynomial:
+0.9874 0.9874 0.9753 0.7563 0.724 0.6621 0.6621 0.5035 0.5035 0.4336
+Call:
+VAR(y = datos_causalidad, p = p_optimo, type = "const")
+
+
+Estimation results for equation Comercio: 
+========================================= 
+Comercio = Comercio.l1 + Remesas.l1 + Comercio.l2 + Remesas.l2 + Comercio.l3 + Remesas.l3 + Comercio.l4 + Remesas.l4 + Comercio.l5 + Remesas.l5 + const 
+
+             Estimate Std. Error t value Pr(&gt;|t|)    
+Comercio.l1 -0.457998   0.124764  -3.671 0.000548 ***
+Remesas.l1   0.355561   0.192337   1.849 0.069889 .  
+Comercio.l2 -0.232021   0.123130  -1.884 0.064806 .  
+Remesas.l2   0.464313   0.200794   2.312 0.024525 *  
+Comercio.l3 -0.199659   0.123736  -1.614 0.112340    
+Remesas.l3   0.294084   0.194218   1.514 0.135701    
+Comercio.l4  0.433084   0.123478   3.507 0.000910 ***
+Remesas.l4   0.218750   0.198681   1.101 0.275687    
+Comercio.l5  0.288048   0.126898   2.270 0.027154 *  
+Remesas.l5  -0.375974   0.186756  -2.013 0.049000 *  
+const        0.008799   0.010038   0.877 0.384521    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Residual standard error: 0.06459 on 55 degrees of freedom
+Multiple R-Squared: 0.7625, Adjusted R-squared: 0.7193 
+F-statistic: 17.66 on 10 and 55 DF,  p-value: 8.049e-14 
+
+
+Estimation results for equation Remesas: 
+======================================== 
+Remesas = Comercio.l1 + Remesas.l1 + Comercio.l2 + Remesas.l2 + Comercio.l3 + Remesas.l3 + Comercio.l4 + Remesas.l4 + Comercio.l5 + Remesas.l5 + const 
+
+             Estimate Std. Error t value Pr(&gt;|t|)  
+Comercio.l1  0.002928   0.088939   0.033   0.9739  
+Remesas.l1  -0.360571   0.137109  -2.630   0.0111 *
+Comercio.l2  0.130141   0.087774   1.483   0.1439  
+Remesas.l2  -0.198417   0.143138  -1.386   0.1713  
+Comercio.l3 -0.168050   0.088206  -1.905   0.0620 .
+Remesas.l3  -0.321473   0.138450  -2.322   0.0240 *
+Comercio.l4 -0.080985   0.088022  -0.920   0.3616  
+Remesas.l4   0.283544   0.141631   2.002   0.0502 .
+Comercio.l5  0.093839   0.090460   1.037   0.3041  
+Remesas.l5  -0.035389   0.133131  -0.266   0.7914  
+const        0.016322   0.007156   2.281   0.0264 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Residual standard error: 0.04605 on 55 degrees of freedom
+Multiple R-Squared: 0.7897, Adjusted R-squared: 0.7515 
+F-statistic: 20.65 on 10 and 55 DF,  p-value: 3.244e-15 
+
+
+
+Covariance matrix of residuals:
+          Comercio   Remesas
+Comercio 0.0041724 0.0005887
+Remesas  0.0005887 0.0021203
+
+Correlation matrix of residuals:
+         Comercio Remesas
+Comercio   1.0000  0.1979
+Remesas    0.1979  1.0000</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Unir las series diferenciadas en un solo objeto de serie de tiempo (ts)</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ts.union es superior a cbind porque alinea los periodos automáticamente</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>datos_causalidad <span class="ot">&lt;-</span> <span class="fu">ts.union</span>(diff_remesas, diff_comercial, diff_tc_real)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Renombrar las columnas para que tus gráficas de Impulso-Respuesta sean legibles</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(datos_causalidad) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Remesas"</span>, <span class="st">"Comercio"</span>, <span class="st">"TC_Real"</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Eliminar los valores faltantes (NAs)</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Recuerda que diff() siempre genera un NA al inicio porque se pierde el primer dato</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>datos_var <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(datos_causalidad)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Verificar que el objeto empiece y termine correctamente</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Remesas     Comercio      TC_Real
+2008 Q2  0.22760873  0.007942854 -0.022103448
+2008 Q3 -0.08012017  0.017773599 -0.015688289
+2008 Q4 -0.07461107  0.061782135  0.178148276
+2009 Q1 -0.10531715 -0.116626861  0.083887676
+2009 Q2  0.05431806 -0.003289477 -0.069752815
+2009 Q3 -0.06396743  0.015799838 -0.006663928</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(datos_var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Remesas     Comercio     TC_Real
+2024 Q3  0.018477141 -0.006718296  0.08506631
+2024 Q4 -0.042538576  0.102954341  0.05113607
+2025 Q1 -0.179934660 -0.120099307  0.01783062
+2025 Q2  0.129834974  0.036591233 -0.04375041
+2025 Q3  0.052225052  0.008586200 -0.04712651
+2025 Q4 -0.006151012  0.117878025 -0.02697776</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>model_var <span class="ot">&lt;-</span> <span class="fu">VAR</span>(datos_var, <span class="at">type =</span> <span class="st">"const"</span>, <span class="at">p =</span> <span class="dv">1</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+VAR Estimation Results:
+========================= 
+Endogenous variables: Remesas, Comercio, TC_Real 
+Deterministic variables: const 
+Sample size: 70 
+Log Likelihood: 269.099 
+Roots of the characteristic polynomial:
+0.426 0.426 0.1478
+Call:
+VAR(y = datos_var, p = 1, type = "const")
+
+
+Estimation results for equation Remesas: 
+======================================== 
+Remesas = Remesas.l1 + Comercio.l1 + TC_Real.l1 + const 
+
+             Estimate Std. Error t value Pr(&gt;|t|)    
+Remesas.l1  -0.231251   0.079700  -2.902 0.005042 ** 
+Comercio.l1 -0.829958   0.108715  -7.634  1.2e-10 ***
+TC_Real.l1  -0.813570   0.197560  -4.118 0.000109 ***
+const        0.024004   0.009816   2.445 0.017143 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Residual standard error: 0.0811 on 66 degrees of freedom
+Multiple R-Squared: 0.5651, Adjusted R-squared: 0.5453 
+F-statistic: 28.59 on 3 and 66 DF,  p-value: 5.808e-12 
+
+
+Estimation results for equation Comercio: 
+========================================= 
+Comercio = Remesas.l1 + Comercio.l1 + TC_Real.l1 + const 
+
+            Estimate Std. Error t value Pr(&gt;|t|)    
+Remesas.l1   0.10010    0.08328   1.202 0.233638    
+Comercio.l1 -0.41038    0.11359  -3.613 0.000586 ***
+TC_Real.l1  -0.08263    0.20642  -0.400 0.690246    
+const        0.01295    0.01026   1.262 0.211289    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Residual standard error: 0.08474 on 66 degrees of freedom
+Multiple R-Squared: 0.1739, Adjusted R-squared: 0.1363 
+F-statistic:  4.63 on 3 and 66 DF,  p-value: 0.005335 
+
+
+Estimation results for equation TC_Real: 
+======================================== 
+TC_Real = Remesas.l1 + Comercio.l1 + TC_Real.l1 + const 
+
+             Estimate Std. Error t value Pr(&gt;|t|)
+Remesas.l1   0.006350   0.049178   0.129    0.898
+Comercio.l1 -0.022436   0.067081  -0.334    0.739
+TC_Real.l1   0.147572   0.121901   1.211    0.230
+const        0.002530   0.006057   0.418    0.678
+
+
+Residual standard error: 0.05004 on 66 degrees of freedom
+Multiple R-Squared: 0.02428,    Adjusted R-squared: -0.02007 
+F-statistic: 0.5475 on 3 and 66 DF,  p-value: 0.6516 
+
+
+
+Covariance matrix of residuals:
+            Remesas   Comercio    TC_Real
+Remesas   0.0065773 -0.0016630  0.0004383
+Comercio -0.0016630  0.0071807 -0.0003457
+TC_Real   0.0004383 -0.0003457  0.0025042
+
+Correlation matrix of residuals:
+         Remesas Comercio  TC_Real
+Remesas    1.000 -0.24199  0.10800
+Comercio  -0.242  1.00000 -0.08153
+TC_Real    0.108 -0.08153  1.00000</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>select_var <span class="ot">&lt;-</span> <span class="fu">VARselect</span>(datos_var, <span class="at">lag.max =</span> <span class="dv">12</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>select_var</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$selection
+AIC(n)  HQ(n)  SC(n) FPE(n) 
+     4      4      3      4 
+
+$criteria
+                   1             2             3             4             5
+AIC(n) -1.604688e+01 -1.692652e+01 -1.745209e+01 -1.758460e+01 -1.745780e+01
+HQ(n)  -1.588193e+01 -1.663786e+01 -1.703973e+01 -1.704852e+01 -1.679801e+01
+SC(n)  -1.562433e+01 -1.618705e+01 -1.639572e+01 -1.621131e+01 -1.576760e+01
+FPE(n)  1.074483e-07  4.470646e-08  2.660457e-08  2.358727e-08  2.730890e-08
+                   6             7             8             9            10
+AIC(n) -1.735517e+01 -1.720804e+01 -1.718368e+01 -1.701728e+01 -1.702297e+01
+HQ(n)  -1.657168e+01 -1.630084e+01 -1.615277e+01 -1.586266e+01 -1.574463e+01
+SC(n)  -1.534806e+01 -1.488402e+01 -1.454275e+01 -1.405943e+01 -1.374821e+01
+FPE(n)  3.116758e-08  3.765733e-08  4.087747e-08  5.215851e-08  5.743023e-08
+                  11            12
+AIC(n) -1.692721e+01 -1.705930e+01
+HQ(n)  -1.552516e+01 -1.553355e+01
+SC(n)  -1.333553e+01 -1.315071e+01
+FPE(n)  7.221175e-08  7.527674e-08</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>model_var_p_4 <span class="ot">&lt;-</span> <span class="fu">VAR</span>(datos_var, <span class="at">type =</span> <span class="st">"const"</span>, <span class="at">p=</span><span class="dv">4</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_var_p_4 )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+VAR Estimation Results:
+========================= 
+Endogenous variables: Remesas, Comercio, TC_Real 
+Deterministic variables: const 
+Sample size: 67 
+Log Likelihood: 348.11 
+Roots of the characteristic polynomial:
+0.9787 0.9787 0.9701 0.7674 0.7121 0.7121 0.6713 0.6713 0.6075 0.6075 0.6039 0.6039
+Call:
+VAR(y = datos_var, p = 4, type = "const")
+
+
+Estimation results for equation Remesas: 
+======================================== 
+Remesas = Remesas.l1 + Comercio.l1 + TC_Real.l1 + Remesas.l2 + Comercio.l2 + TC_Real.l2 + Remesas.l3 + Comercio.l3 + TC_Real.l3 + Remesas.l4 + Comercio.l4 + TC_Real.l4 + const 
+
+             Estimate Std. Error t value Pr(&gt;|t|)    
+Remesas.l1  -0.160855   0.141839  -1.134 0.261778    
+Comercio.l1 -0.085923   0.193278  -0.445 0.658418    
+TC_Real.l1  -0.773402   0.197574  -3.914 0.000256 ***
+Remesas.l2  -0.263060   0.122771  -2.143 0.036662 *  
+Comercio.l2  0.487715   0.173472   2.811 0.006858 ** 
+TC_Real.l2   0.340141   0.210072   1.619 0.111239    
+Remesas.l3  -0.199041   0.131194  -1.517 0.135061    
+Comercio.l3  0.317131   0.187149   1.695 0.095923 .  
+TC_Real.l3  -0.390541   0.200984  -1.943 0.057219 .  
+Remesas.l4   0.294542   0.114289   2.577 0.012726 *  
+Comercio.l4  0.211082   0.176937   1.193 0.238094    
+TC_Real.l4  -0.089584   0.198682  -0.451 0.653874    
+const        0.011026   0.009366   1.177 0.244257    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Residual standard error: 0.06225 on 54 degrees of freedom
+Multiple R-Squared: 0.7838, Adjusted R-squared: 0.7357 
+F-statistic: 16.31 on 12 and 54 DF,  p-value: 6.909e-14 
+
+
+Estimation results for equation Comercio: 
+========================================= 
+Comercio = Remesas.l1 + Comercio.l1 + TC_Real.l1 + Remesas.l2 + Comercio.l2 + TC_Real.l2 + Remesas.l3 + Comercio.l3 + TC_Real.l3 + Remesas.l4 + Comercio.l4 + TC_Real.l4 + const 
+
+             Estimate Std. Error t value Pr(&gt;|t|)   
+Remesas.l1   0.038737   0.105483   0.367  0.71488   
+Comercio.l1 -0.386991   0.143736  -2.692  0.00943 **
+TC_Real.l1   0.076502   0.146931   0.521  0.60473   
+Remesas.l2   0.102353   0.091302   1.121  0.26723   
+Comercio.l2 -0.212810   0.129007  -1.650  0.10483   
+TC_Real.l2  -0.011910   0.156226  -0.076  0.93951   
+Remesas.l3  -0.151224   0.097566  -1.550  0.12699   
+Comercio.l3 -0.281813   0.139178  -2.025  0.04784 * 
+TC_Real.l3   0.026900   0.149467   0.180  0.85785   
+Remesas.l4  -0.107420   0.084994  -1.264  0.21171   
+Comercio.l4  0.348468   0.131584   2.648  0.01059 * 
+TC_Real.l4   0.155527   0.147755   1.053  0.29721   
+const        0.015613   0.006965   2.242  0.02911 * 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Residual standard error: 0.0463 on 54 degrees of freedom
+Multiple R-Squared: 0.7914, Adjusted R-squared: 0.745 
+F-statistic: 17.07 on 12 and 54 DF,  p-value: 2.752e-14 
+
+
+Estimation results for equation TC_Real: 
+======================================== 
+TC_Real = Remesas.l1 + Comercio.l1 + TC_Real.l1 + Remesas.l2 + Comercio.l2 + TC_Real.l2 + Remesas.l3 + Comercio.l3 + TC_Real.l3 + Remesas.l4 + Comercio.l4 + TC_Real.l4 + const 
+
+             Estimate Std. Error t value Pr(&gt;|t|)
+Remesas.l1   0.018703   0.106574   0.175    0.861
+Comercio.l1  0.103740   0.145223   0.714    0.478
+TC_Real.l1   0.122292   0.148452   0.824    0.414
+Remesas.l2   0.046486   0.092247   0.504    0.616
+Comercio.l2  0.172776   0.130342   1.326    0.191
+TC_Real.l2  -0.086551   0.157842  -0.548    0.586
+Remesas.l3  -0.048162   0.098576  -0.489    0.627
+Comercio.l3  0.154899   0.140618   1.102    0.276
+TC_Real.l3   0.056099   0.151014   0.371    0.712
+Remesas.l4  -0.010241   0.085874  -0.119    0.906
+Comercio.l4  0.104745   0.132946   0.788    0.434
+TC_Real.l4  -0.139566   0.149284  -0.935    0.354
+const       -0.005125   0.007037  -0.728    0.470
+
+
+Residual standard error: 0.04677 on 54 degrees of freedom
+Multiple R-Squared: 0.09749,    Adjusted R-squared: -0.1031 
+F-statistic: 0.4861 on 12 and 54 DF,  p-value: 0.9142 
+
+
+
+Covariance matrix of residuals:
+           Remesas   Comercio    TC_Real
+Remesas  0.0038753  0.0010407  0.0007387
+Comercio 0.0010407  0.0021433 -0.0006839
+TC_Real  0.0007387 -0.0006839  0.0021878
+
+Correlation matrix of residuals:
+         Remesas Comercio TC_Real
+Remesas   1.0000   0.3611  0.2537
+Comercio  0.3611   1.0000 -0.3158
+TC_Real   0.2537  -0.3158  1.0000</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>impulse_respons <span class="ot">&lt;-</span><span class="fu">irf</span>(model_var_p_4, <span class="at">impulse =</span> <span class="st">"Remesas"</span>,  <span class="at">n.ahead =</span> <span class="dv">12</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(impulse_respons)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proyecto_remesas_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,133 @@
+---
+title: "proyecto"
+format: html
+editor: visual
+---
+
+
+```{r}
+library(readr)
+Indices <- read_csv("C:/Users/PC/Desktop/UNAM/6to Semestre/Econometría II/Proyecto_3/Indices.csv")
+
+```
+
+```{r}
+library(readr)
+data <- read_csv("C:/Users/PC/Desktop/UNAM/6to Semestre/Econometría II/Proyecto_3/remesas_trim_guanajuato.csv")
+
+```
+
+
+
+```{r}
+tc_real<- ts( 
+  data= Indices$tc_real, 
+  frequency = 12, 
+  start = c(2008, 1))
+
+Indice_comercial_ts<- ts( 
+  data= Indices$Indice_comercial, 
+  frequency = 12, 
+  start = c(2008, 1))
+
+
+```
+
+```{r}
+tc_real_t <- aggregate(tc_real, nfrequency = 4, FUN = mean)
+plot(tc_real_t)
+head(tc_real_t)
+
+comercial_t <- aggregate(Indice_comercial_ts, nfrequency = 4, FUN = mean)
+plot(comercial_t)
+```
+
+```{r}
+diff_tc_real <- diff(log(tc_real_t))
+diff_comercial <- diff(log(comercial_t))
+```
+
+```{r}
+remesas_guanajuato_ts <- ts( 
+  data= data$`Remesas trimestrales`, 
+  frequency = 4, 
+  start = c(2008, 1))
+
+diff_remesas <- diff(log(remesas_guanajuato_ts))
+```
+
+
+```{r}
+library(zoo)
+library(urca)
+library(dplyr)
+library(vars)
+
+datos_causalidad <- cbind(diff_remesas, diff_comercial)
+colnames(datos_causalidad) <- c("Comercio", "Remesas")
+
+# Esto te dirá cuántos NAs hay en cada columna
+colSums(is.na(datos_causalidad))
+datos_causalidad <- na.omit(datos_causalidad)
+
+
+
+```
+```{r}
+
+seleccion <- VARselect(datos_causalidad, lag.max = 12, type = "const")
+p_optimo <- seleccion$selection["AIC(n)"]
+
+
+modelo_var <- VAR(datos_causalidad, p = p_optimo, type = "const")
+
+causalidad_resultado <- causality(modelo_var, cause = "Remesas")
+causalidad_resultado
+summary(modelo_var)
+```
+
+```{r}
+# 1. Unir las series diferenciadas en un solo objeto de serie de tiempo (ts)
+# ts.union es superior a cbind porque alinea los periodos automáticamente
+datos_causalidad <- ts.union(diff_remesas, diff_comercial, diff_tc_real)
+
+# 2. Renombrar las columnas para que tus gráficas de Impulso-Respuesta sean legibles
+colnames(datos_causalidad) <- c("Remesas", "Comercio", "TC_Real")
+
+# 3. Eliminar los valores faltantes (NAs)
+# Recuerda que diff() siempre genera un NA al inicio porque se pierde el primer dato
+datos_var <- na.omit(datos_causalidad)
+
+# 4. Verificar que el objeto empiece y termine correctamente
+head(datos_var)
+tail(datos_var)
+```
+
+```{r}
+
+
+model_var <- VAR(datos_var, type = "const", p = 1)
+summary(model_var)
+
+```
+
+```{r}
+
+select_var <- VARselect(datos_var, lag.max = 12)
+select_var
+```
+```{r}
+model_var_p_4 <- VAR(datos_var, type = "const", p=4)
+summary(model_var_p_4 )
+```
+
+```{r}
+impulse_respons <-irf(model_var_p_4, impulse = "Remesas",  n.ahead = 12)
+
+plot(impulse_respons)
+```
+
+
+
+
+
